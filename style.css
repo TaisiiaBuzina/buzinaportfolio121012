@@ -1,0 +1,716 @@
+/* ! Глобальні налаштування: обнулення відступів та вибір шрифту для всієї сторінки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.61;
+}
+
+/* ! Додає плавне прокручування до якорів (наприклад, при натисканні на "Портфоліо") */
+html {
+    scroll-behavior: smooth; 
+}
+
+/* ! Базовий фон сторінки та відступ зверху, щоб контент не ховався під фіксованою шапкою */
+body {
+    background-color: #FDFCFB; 
+    color: #1a1a1a;
+    line-height: 1.6;
+    padding-top: 80px; 
+}
+
+/* ! Навігація: фіксоване положення зверху, елементи рознесені по краях через flexbox */
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 50px;  
+    background: #ffffff;
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    z-index: 10000; /* ! Високий пріоритет шару, щоб бути поверх усіх елементів */
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* ! Контейнер для логотипу та пошуку/тексту зліва */
+.nav-left{
+    display: flex;
+    gap: 30px; 
+    align-items: center;
+}
+
+/* ! Стилізація поля вводу: зміна кольору рамки при фокусі (натисканні) */
+.nav-left input {
+    padding: 10px 18px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 12px;
+    outline: none;
+    transition: 0.3s ease;
+}
+.nav-left input:focus { border-color: #580B0B; }
+
+/* ! Текстові підписи в навігації: малі літери, великий міжлітерний інтервал */
+.nav-left span {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888;
+}
+
+/* ! Меню навігації справа: список без маркерів, елементи в ряд */
+.nav-menu { display: flex; gap: 35px; list-style: none; }
+.nav-menu a {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+.nav-menu a:hover { color: #580B0B; }
+
+
+
+
+
+
+/* Піднімаємо всю шапку вище */
+.header {
+    padding-top: 20px !important; /* Зменшуємо відступ зверху (було мабуть 60-80) */
+    padding-bottom: 20px !important;
+}
+
+/* Додаємо бордову рамочку для твого фото */
+.main-photo {
+    border: 3px solid #580B0B !important; /* Тонка бордова рамка */
+    padding: 5px; /* Невеликий відступ між фото і рамкою, щоб виглядало повітряно */
+    background-color: #fff; /* Білий фон під фото в зоні відступу */
+    transition: all 0.4s ease;
+}
+
+/* Ефект при наведенні на фото (опціонально,  стильно) */
+.main-photo:hover {
+    box-shadow: 10px 10px 0px rgba(88, 11, 11, 0.1); /* Тінь як у твоїх карток */
+}
+
+
+
+
+
+
+
+
+/* ! Хедер: центрована секція з мінімальною висотою 85% від екрану */
+.header { 
+    display: flex; 
+    align-items: center; 
+    padding: 80px 50px; 
+    min-height: 85vh; }
+.header-text { 
+    flex: 1.2; 
+    padding-right: 60px; }
+
+/* ! Кнопка-логотип з бордовою лінією знизу через псевдоелемент after */
+.btn1 { 
+    display: inline-block; 
+    text-decoration: none; 
+    color: #1a1a1a; 
+    font-weight: 900; 
+    font-size: 20px; 
+    letter-spacing: 3px; 
+    margin-bottom: 30px; 
+    position: relative; }
+.btn1::after { 
+    content: ''; 
+    position: absolute; 
+    bottom: -5px; 
+    left: 0; 
+    width: 30px; 
+    height: 2px; 
+    background: #580B0B; }
+
+/* ! Головний заголовок: анімація розсування літер при наведенні курсору */
+.header h1 { 
+    font-size: 38px; 
+    text-transform: uppercase; 
+    letter-spacing: 4px; 
+    color: #1a1a1a; 
+    margin: 15px 0; 
+    font-weight: 800; 
+    line-height: 1.1; 
+    transition: 0.3s ease; }
+.header h1:hover { 
+    color: #580B0B; 
+    letter-spacing: 6px; }
+
+/* ! Стиль слогану: курсивний текст з акцентними бордовими вставками */
+.slogan { 
+    font-size: 18px; 
+    line-height: 1.6; 
+    color: #1a1a1a; 
+    margin: 20px 0 30px;
+    font-style: italic; 
+    max-width: 500px; }
+.slogan span { 
+    color: #580B0B; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    font-style: normal; }
+
+/* ! Головна кнопка: ефект підняття вгору (translateY) при наведенні */
+.btn { 
+    display: inline-block; 
+    padding: 18px 45px; 
+    background-color: #1a1a1a; 
+    color: #fff; 
+    text-decoration: none; 
+    text-transform: uppercase; 
+    font-size: 11px; 
+    letter-spacing: 3px; 
+    font-weight: 700; 
+    transition: 0.4s ease; }
+.btn:hover { 
+    background-color: #580B0B; 
+    transform: translateY(-3px); }
+
+/* ! Права частина хедера з фото та декоративною тінню */
+.header-img { 
+    flex: 1; 
+    position: relative; }
+.photo-wrapper { 
+    position: relative; 
+    overflow: hidden; 
+    height: 650px; 
+    max-width: 500px; 
+    width: 100%; 
+    box-shadow: 30px 30px 0px rgba(88, 11, 11, 0.05); 
+    transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1); }
+
+/* ! Ефект фото: початково чорно-біле, при наведенні на хедер стає кольоровим */
+.main-photo { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    filter: grayscale(100%); 
+    transition: 0.8s ease; }
+
+
+/* ! Ефект відблиску (shimmer): градієнт, що пролітає по фото при наведенні */
+.photo-shimmer { 
+    position: absolute; 
+    top: 0; 
+    left: -150%; 
+    width: 60%; 
+    height: 100%; 
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%); 
+    transform: skewX(-20deg); 
+    transition: 0.7s cubic-bezier(0.19, 1, 0.22, 1); 
+    pointer-events: none; }
+.photo-wrapper:hover .photo-shimmer { left: 150%; }
+.header:hover .main-photo { filter: grayscale(0%); }
+.photo-wrapper:hover { 
+    box-shadow: 40px 40px 0px rgba(88, 11, 11, 0.1); 
+    transform: scale(1.01); }
+
+/* ! Секція "Про мене": центрування тексту та акцент на бордовий колір */
+.about { 
+    padding: 80px 20px; 
+    background: #FDFCFB; 
+    text-align: center; }
+.abouth1 { 
+    font-size: 12px; 
+    text-transform: uppercase; 
+    letter-spacing: 5px; 
+    color: #580B0B; 
+    margin-bottom: 20px; }
+.h { 
+    width: 100px; 
+    border: 0; 
+    border-top: 2px solid #580B0B; 
+    margin: 0 auto 40px; }
+.about-description { 
+    max-width: 850px; 
+    margin: 0 auto; 
+    font-size: 18px; 
+    line-height: 1.8; 
+    color: #1a1a1a; 
+    font-weight: 300; }
+.about-description span { 
+    color: #580B0B; 
+    font-weight: bold; }
+
+
+
+/* ! Секція портфоліо: гнучка сітка (flex-wrap) для карток категорій */
+.works { 
+    padding: 60px 20px; 
+    background: #FDFCFB; 
+    text-align: center; }
+.m { 
+    padding-bottom: 40px; 
+    font-size: 24px; 
+    text-transform: uppercase;
+    letter-spacing: 3px; }
+.cards { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 25px; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 20px; }
+
+/* ! Картка категорії: автоматичне підлаштування розміру, ефект підняття та тіні при наведенні */
+.card { 
+    flex: 1 1 calc(25% - 30px); 
+    min-width: 250px; 
+    padding: 30px 20px; 
+    text-align: center; 
+    color: #1a1a1a; 
+    text-decoration: none; 
+    background: #ffffff; 
+    border: 1px solid rgba(0,0,0,0.05);
+     box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+     transition: all 0.4s ease;
+      display: flex; 
+      flex-direction: column;
+       align-items: center; }
+/* Вирівнюємо назви категорій, щоб описи під ними були в одну лінію */
+.card h3 {
+    height: 70px; /* Фіксована висота для назви */
+    display: flex;
+    align-items: center; /* Центрує текст по вертикалі */
+    justify-content: center; /* Центрує по горизонталі */
+    margin: 10px 0;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Вирівнюєм самі описи (текст під назвою) */
+.card p {
+    margin-top: 0;
+    font-size: 16px;
+    line-height: 1.4;
+    min-height: 45px; /* Резервуєм місце під 2-3 рядки опису */
+}
+.card img { 
+    width: 100%; 
+    height: 150px; 
+    object-fit: cover;
+     margin-bottom: 15px; 
+     border-radius: 8px; }
+.card:hover { 
+    transform: translateY(-10px); 
+    background-color: #f3f3e7; 
+    box-shadow: 15px 15px 0px rgba(88, 11, 11, 0.1); }
+.card:hover h3 { 
+    color: #580B0B; }
+
+/* Кнопка диплома: прямокутна та компактна */
+.btn2 {
+    margin: 5px auto 0 !important; /* Трохи менший відступ зверху */
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 30px; /* Зменшили внутрішні відступи (було 12px 40px) */
+    gap: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px; /* Можна трохи зменшити шрифт для акуратності */
+    border-radius: 0; /* ! Прямі кути (прибрали 50px) */
+    background: linear-gradient(45deg, #1a1a1a, #580B0B);
+    transition: all 0.4s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ! Підвал (футер): використання flexbox для розподілу соцмереж та контактів */
+.footer { 
+    padding: 120px 50px 50px; 
+    background-color: #f3e9e9; 
+    border-top: 1px solid rgba(0,0,0,0.03); }
+.footer-top { 
+    display: flex; 
+    justify-content: space-between; 
+    margin-bottom: 80px; }
+.footer-col { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; }
+.footer-label { 
+    font-size: 10px; 
+    text-transform: uppercase; 
+    color: #580B0B; 
+    font-weight: 700;
+     letter-spacing: 2px; }
+
+/* ! Посилання в підвалі: соцмережі в ряд, контакти в стовпчик з вирівнюванням вправо */
+.footer-links { 
+    display: flex; 
+    flex-direction: row;
+     gap: 25px; }
+.footer-contacts { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px; 
+    text-align: right; }
+.footer-links a, .footer-contacts a {
+     text-decoration: none; 
+     color: #1a1a1a; 
+     font-size: 12px;
+      text-transform: uppercase; 
+      transition: 0.3s ease; }
+.footer-links a:hover, .footer-contacts a:hover {
+     color: #580B0B; }
+
+/* ! Нижня лінія підвалу з копірайтом та великим розрядом літер */
+.footer-bottom { text-align: center; }
+.footer-line { 
+    border: 0; 
+    border-top: 1px solid rgba(0,0,0,0.08); 
+    margin-bottom: 30px; }
+.footer-bottom p { 
+    font-size: 9px; 
+    text-transform: uppercase; 
+    letter-spacing: 5px; 
+    color: #888; }
+
+/* ! Адаптація під мобільні пристрої: зміна напрямку flex з рядка на стовпчик */
+@media (max-width: 768px) {
+    .footer-top {
+         flex-direction: column; 
+         align-items: center; 
+         gap: 50px; 
+         text-align: center; }
+    .footer-contacts { text-align: center; }
+}
+
+
+/* ! Лайтбокс (збільшене фото): накладання поверх всього сайту з ефектом розмиття фону */
+.lightbox { 
+    display: none; 
+    position: fixed; 
+    z-index: 20000; 
+    left: 0;
+     top: 0; 
+     width: 100%;
+      height: 100%; 
+      background: rgba(0,0,0,0.95); 
+      backdrop-filter: blur(10px); }
+.lightbox-content { 
+    position: relative; 
+    margin: auto; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    max-width: 800px; 
+    text-align: center; 
+    color: white; }
+#lightbox-img { 
+    max-width: 100%; 
+    max-height: 70vh; }
+.lightbox-info h3 { 
+    color: #580B0B; 
+    text-transform: uppercase; 
+    margin: 20px 0; }
+.close { 
+    position: absolute;
+     top: 30px; 
+     right: 50px; 
+     color: white; 
+     font-size: 50px; 
+     cursor: pointer; }
+
+/* ! Навігація в слайдері: кнопки вліво/вправо з напівпрозорим фоном */
+.prev, .next { 
+    position: absolute; 
+    top: 50%; 
+    padding: 20px; 
+    color: white;
+     font-size: 30px; 
+     cursor: pointer; 
+     text-decoration: none;
+      background: rgba(255,255,255,0.1); 
+      border-radius: 50%; }
+.prev { 
+    left: 50px; } .next { 
+        right: 50px; }
+
+/* ! Стилі окремої сторінки живопису: адаптивний заголовок через clamp */
+.paint-page { 
+    padding: 120px 20px 80px; 
+    max-width: 1200px;
+     margin: 0 auto; 
+     font-family: sans-serif; }
+.paint-page h1 { 
+    font-size: clamp(40px, 8vw, 60px);
+     text-transform: uppercase;
+      letter-spacing: -2px;
+       margin-bottom: 10px; 
+       color: #1a1a1a; }
+.paint-sub { 
+    color: #580B0B; 
+    letter-spacing: 3px; 
+    text-transform: uppercase; 
+    font-size: 12px;
+     margin-bottom: 60px; 
+     display: block; }
+
+/* ! Випадаючі списки (details/summary): кастомна анімація плюсика при відкритті (rotate 45deg) */
+details { 
+    margin-bottom: 20px;
+     border-bottom: 1px solid #e0e0e0; 
+     padding: 15px 0;
+      cursor: pointer;
+       transition: all 0.3s ease; }
+details[open] {
+     padding-bottom: 40px; }
+summary { 
+    font-size: 24px;
+     text-transform: uppercase; 
+     letter-spacing: 4px; 
+     list-style: none; 
+     display: flex; 
+     justify-content: space-between; 
+     align-items: center; 
+     font-weight: 300;
+      color: #1a1a1a; }
+summary::-webkit-details-marker { display: none; }
+summary::after { 
+    content: "+"; 
+    color: #580B0B; 
+    font-size: 30px; 
+    font-weight: 300;
+     transition: transform 0.4s ease; }
+details[open] summary::after { transform: rotate(45deg); }
+
+/* ! Галерея Masonry: розбиття на 3 колонки без розриву елементів (break-inside: avoid) */
+.course-gallery { 
+    display: block; 
+    column-count: 3;
+     column-gap: 30px;
+      padding-top: 40px; }
+.work-item { 
+    margin-bottom: 30px; 
+    break-inside: avoid; 
+    display: inline-block; 
+    width: 100%; }
+.work-item img { 
+    width: 100%; 
+    height: auto;
+     display: block; 
+     margin-bottom: 12px; 
+     transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1); }
+.work-item img:hover { transform: scale(1.02); }
+.work-caption { 
+    font-size: 11px; 
+    color: #1a1a1a;
+     text-transform: uppercase; }
+
+/* ! Сітка для файлів: використання CSS Grid для створення 4 рівних колонок */
+.file-grid { 
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px; 
+    padding: 20px 0; }
+
+/* ! Картка файлу: центроване розміщення іконки та тексту, бордова рамка */
+.file-card { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    text-decoration: none; 
+    border: 1px solid #580B0B;
+     padding: 20px 10px;
+      transition: 0.3s; }
+.file-card:hover { background: #f9f9f9; }
+.file-icon { 
+    font-size: 14px;
+     font-weight: bold; 
+     color: #580B0B; 
+     margin-bottom: 8px; }
+.file-card p { 
+    font-size: 10px; 
+    letter-spacing: 1px; 
+    color: #1a1a1a; 
+    margin: 0;
+     text-transform: uppercase; }
+
+/* ! Адаптивність файлів: на малих екранах 4 колонки перетворюються на 2 */
+@media (max-width: 600px) {
+    .file-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+
+
+
+/* ! Опис під заголовком сторінки: обмежуємо ширину, щоб текст не розтягувався */
+.work-description {
+    max-width: 650px; /* ! Не дає тексту розповзатися на весь екран */
+    text-align: left; /* ! Вирівнювання по лівому краю для зручності читання */
+    font-size: 16px;  /* ! Трохи більший розмір, щоб виділити опис */
+    line-height: 1.8; /* !  "повітря" між рядками */
+    margin: 20px 0 40px 0; /* ! Відступи: зверху 20px, знизу 40px */
+    text-transform: none; /* ! Прибирає капс, щоб текст виглядав спокійніше і професійніше */
+    color: #444; /* ! Робим колір трішки м’якшим за основний чорний */
+    font-family: 'Courier New', Courier, monospace; /* !  фірмовий шрифт */
+}
+
+
+
+.section-title {
+    font-size: 32px; 
+    text-align: center;
+    text-transform: uppercase; /* Щоб завжди були великі літери */
+    letter-spacing: 5px; /* стильноге розтягування літерам */
+    margin-top: 80px; /* Відступ зверху, щоб секції не злипалися */
+    margin-bottom: 40px; /* Відступ до тексту під заголовком */
+    font-family: 'Courier New', Courier, monospace; /* основний шрифт */
+
+}
+
+
+
+/* --- ТЕКСТУРНИЙ ФОН ТА БЛОКИ (БЕЗ ЗМІНИ ШРИФТУ) --- */
+
+body {
+    background-color: #FDFCFB; /*  базовий колір із фото */
+    /*  текстуру "шуму", щоб сайт виглядав як справжній папір */
+    background-image: url("https://www.transparenttextures.com/patterns/p6.png");
+    background-attachment: fixed; /* Щоб фон не совався при скролі */
+    font-family: 'Courier New', Courier, monospace !important;
+}
+
+/* Налаштування для блоків, щоб вони не ламали  шрифт */
+.about, .works, .diploma {
+    padding: 100px 0;
+    transition: background-color 0.6s ease;
+    font-family: inherit !important; /* Беремо тільки  шрифт з body */
+}
+
+/* Кольори при наведенні (залишаємо  вибір) */
+.about:hover {
+    background-color: rgba(255, 192, 203, 0.2); /* Рожевий */
+}
+
+.works:hover {
+    background-color: rgba(10, 19, 34, 0.05); /* Блакитний */
+}
+
+.diploma:hover {
+    background-color: rgba(255, 245, 225, 0.5); /* Бежевий */
+}
+
+
+
+
+
+
+
+/* --- 1. АДАПТИВНІ СМУЖКИ (під довжину тексту) --- */
+/* Універсальний стиль для всіх H2 на сайті */
+/* заголовки компактни*/
+h2.section-title, h2.abouth1, h2.main-title, h2.m {
+    text-align: center;
+    /* ! убрать ВІДСТУП ЗВЕРХУ  */
+    margin: 10px auto 30px !important; 
+    display: block;
+    width: 100%;
+}
+
+h2.section-title span, h2.abouth1 span, h2.main-title span, h2.m span {
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: #1a1a1a;
+    position: relative;
+    display: inline-block;
+    /* ! ВІДСТУП ВІД ТЕКСТУ ДО ЛІНІЇ   */
+    padding-bottom: 15px; 
+}
+
+/* Налаштування лінії */
+h2.section-title span::after, h2.abouth1 span::after, h2.main-title span::after, h2.m span::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 1px;
+    background-color: #580B0B;
+}
+
+/* убрать зайві відступи у самих секцій, щоб не було русто */
+.about, .works, .projects {
+    padding-top: 40px !important; /*  секції вище */
+}
+
+
+
+/* Однакова лінія під усіма H2 */
+h2.section-title span::after, h2.abouth1 span::after, h2.main-title span::after, h2.m span::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; /* Лінія рівно по ширині слова */
+    height: 1px;
+    background-color: #580B0B;
+}
+
+/* убрать старі довгі лінії (клас .h), якщо вони лишилися */
+.h, hr.h { display: none; }
+
+
+/* --- 2. ЗБІЛЬШЕННЯ ШРИФТУ У ШАПЦІ --- */
+.nav-left span {
+    font-size: 14px; 
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.nav-menu a {
+    font-size: 14px; 
+    letter-spacing: 1px;
+}
+
+
+/* --- 3. ЧИТАБЕЛЬНІСТЬ ФУТЕРА --- */
+.footer {
+    background-color: #1a1a1a; 
+    color: #ffffff;
+    padding: 80px 50px 40px;
+}
+
+.footer-label {
+    color: #ff4d4d; 
+    font-size: 12px;
+}
+
+.footer-links a, .footer-contacts a {
+    color: #ffffff !important;
+    font-size: 14px; /* Більший шрифт */
+    opacity: 0.8;
+}
+
+.footer-links a:hover, .footer-contacts a:hover {
+    opacity: 1;
+    color: #ff4d4d !important;
+}
+
+.footer-bottom p {
+    color: #cac8c8;
+    font-size: 10px;
+    margin-top: 20px;
+}
+
+.footer-line {
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
